@@ -1,0 +1,52 @@
+- hosts: app
+  tasks:
+          - name: "Create user simpleapp"
+            user:
+                    name: simpleapp
+                    password: "$6$YFz2kmhmRR$nKiUenpm/mhFVM2qYGcJIXZ6OHyJGer8HJzsFfl72YqcKKQj6jW//4K9n.fDK.BOpzPIXppMpZnBtxeSd/Gb00"
+                    groups: sudo,docker
+                    state: present
+                    shell: /bin/bash
+                    system: no
+                    createhome: yes
+                    home: /home/simpleapp
+
+- hosts: jk
+  tasks:
+          - name: "Create user jenkins"
+            user:
+                    name: jenkins
+                    password: "$6$YFz2kmhmRR$nKiUenpm/mhFVM2qYGcJIXZ6OHyJGer8HJzsFfl72YqcKKQj6jW//4K9n.fDK.BOpzPIXppMpZnBtxeSd/Gb00"
+                    groups: sudo,docker
+                    state: present
+                    shell: /bin/bash
+                    system: no
+                    createhome: yes
+                    home: /home/jenkins
+
+- hosts: pm
+  tasks:
+          - name: "Create user monitoring"
+            user:
+                    name: pm
+                    password: "$6$YFz2kmhmRR$nKiUenpm/mhFVM2qYGcJIXZ6OHyJGer8HJzsFfl72YqcKKQj6jW//4K9n.fDK.BOpzPIXppMpZnBtxeSd/Gb00"
+                    groups: sudo,docker
+                    state: present
+                    shell: /bin/bash
+                    system: no
+                    createhome: yes
+                    home: /home/monitoring
+
+# Change PasswordAuthentication and rload sshd
+- hosts: all
+  tasks:
+          - name: change PasswordAuth
+            lineinfile:
+                    path: /etc/ssh/sshd_config
+                    regexp: 'PasswordAuthentication no'
+                    line: PasswordAuthentication yes
+
+          - name: reload sshd
+            systemd:
+                    name: sshd
+                    state: reloaded

@@ -1,0 +1,11 @@
+certbot_site_names:
+    - khaerul.instructype.com
+    - cicd.khaerul.instructype.com
+    - prometheus.khaerul.instructype.com
+    - monitoring.khaerul.instructype.com
+
+
+
+certbot_package: "python3-certbot-nginx"
+certbot_plugin: "nginx"
+certbot_mail_address: khoerulanwar752@gmail.com

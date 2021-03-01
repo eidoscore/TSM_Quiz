@@ -6,7 +6,7 @@ const port = 3000
 
 app.get('/', (req, res) => {
     var datetime = new Date().toISOString();
-    res.send(`Server Time : ${datetime} \nEnvironment name : ${process.env.NODE_ENV}`);
+    res.send(`<div>Server Time : ${datetime}</div> <div>Environment name : ${process.env.NODE_ENV}</div>`);
 })
 
 app.listen(port, () => {
