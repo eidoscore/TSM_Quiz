@@ -1,0 +1,17 @@
+- hosts: pm
+  tasks:
+    - name: mkdir docker
+      file:
+        path: /home/monitoring/prometheus
+        state: directory
+
+    - name: copy prometheus conf
+      copy:
+        src: docker_images/prometheus.yml
+        dest: /home/monitoring/prometheus/prometheus.yml
+
+    - name: run prometheus
+      command: docker run --name prometheus -p 9090:9090 -d -v /home/monitoring/prometheus:/etc/prometheus prom/prometheus
+
+    - name: run grafana
+      command: docker run --name grafana -d -p 3000:3000 grafana/grafana
