@@ -1,3 +1,10 @@
 version: '3'
 services:
-    c
+        simpleapp:
+                container_name: simpleapp
+                image: eidoscore/simpleapp:latest
+                restart: always
+                stdin_open: true
+                ports:
+                        - 3000:3000
+
