@@ -1,6 +1,6 @@
 - hosts: public 
   vars_files:
-    - group_vars/certbot.yml
+    - certbot_vars/certbot.yml
   
   tasks:
   - name : Install Python Package

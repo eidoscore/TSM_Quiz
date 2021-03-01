@@ -3,7 +3,7 @@
           - name: "Create user simpleapp"
             user:
                     name: simpleapp
-                    password: "$6$YFz2kmhmRR$nKiUenpm/mhFVM2qYGcJIXZ6OHyJGer8HJzsFfl72YqcKKQj6jW//4K9n.fDK.BOpzPIXppMpZnBtxeSd/Gb00"
+                    password: "$6$PMWXjVuWRac$yAKSYUgU438/eCzvmVFzQRd/tCBkcvjNeO4GGJiIWgY3vIsO4LwY0SIPjqF6.xK2oYk7djIP3U8iTFXSoEvZO/"
                     groups: sudo,docker
                     state: present
                     shell: /bin/bash
@@ -16,8 +16,8 @@
           - name: "Create user jenkins"
             user:
                     name: jenkins
-                    password: "$6$YFz2kmhmRR$nKiUenpm/mhFVM2qYGcJIXZ6OHyJGer8HJzsFfl72YqcKKQj6jW//4K9n.fDK.BOpzPIXppMpZnBtxeSd/Gb00"
-                    groups: sudo,docker
+                    password: "$6$PMWXjVuWRac$yAKSYUgU438/eCzvmVFzQRd/tCBkcvjNeO4GGJiIWgY3vIsO4LwY0SIPjqF6.xK2oYk7djIP3U8iTFXSoEvZO/"
+                    groups: sudo
                     state: present
                     shell: /bin/bash
                     system: no
@@ -28,9 +28,9 @@
   tasks:
           - name: "Create user monitoring"
             user:
-                    name: pm
-                    password: "$6$YFz2kmhmRR$nKiUenpm/mhFVM2qYGcJIXZ6OHyJGer8HJzsFfl72YqcKKQj6jW//4K9n.fDK.BOpzPIXppMpZnBtxeSd/Gb00"
-                    groups: sudo,docker
+                    name: monitoring
+                    password: "$6$PMWXjVuWRac$yAKSYUgU438/eCzvmVFzQRd/tCBkcvjNeO4GGJiIWgY3vIsO4LwY0SIPjqF6.xK2oYk7djIP3U8iTFXSoEvZO/"
+                    groups: sudo
                     state: present
                     shell: /bin/bash
                     system: no
@@ -38,7 +38,7 @@
                     home: /home/monitoring
 
 # Change PasswordAuthentication and rload sshd
-- hosts: all
+          - hosts: all
   tasks:
           - name: change PasswordAuth
             lineinfile:
